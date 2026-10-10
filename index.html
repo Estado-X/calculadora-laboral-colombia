@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¿Contrato laboral o prestación de servicios? · Estado X</title>
+<meta name="description" content="Calculadora abierta: cuánto te queda al año y cuánto cuesta un contrato laboral frente a uno de prestación de servicios en Colombia, con las reglas de 2026.">
+<meta property="og:title" content="¿Contrato laboral o prestación de servicios?">
+<meta property="og:description" content="Haz la cuenta completa: prestaciones, aportes y retención en la fuente, para quien recibe la oferta y para quien contrata.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/estilos.css">
+</head>
+<body>
+<header class="banda">
+  <div class="contenedor banda__in">
+    <p class="kicker">Calculadora abierta · Estado X</p>
+    <h1>¿Contrato laboral o <em>prestación de servicios</em>?</h1>
+    <p class="banda__sub">Por el mismo valor al mes no te queda lo mismo ni le cuesta lo mismo a quien contrata. Haz la cuenta completa con las reglas de <span data-anio>2026</span>.</p>
+
+    <div class="mirada" role="radiogroup" aria-label="¿Desde qué lado haces la cuenta?">
+      <button type="button" class="mirada__op activa" data-mirada="persona" role="radio" aria-checked="true">Me ofrecen un trabajo</button>
+      <button type="button" class="mirada__op" data-mirada="empresa" role="radio" aria-checked="false">Voy a contratar a alguien</button>
+    </div>
+
+    <div class="veredicto" aria-live="polite">
+      <div class="veredicto__cifra">
+        <span class="veredicto__etq" id="v-etq">Diferencia al año</span>
+        <strong id="v-cifra">…</strong>
+        <span class="veredicto__per" id="v-per"></span>
+      </div>
+      <p class="veredicto__texto" id="v-texto"></p>
+    </div>
+  </div>
+</header>
+
+<main class="contenedor">
+  <section class="bloque entradas" aria-labelledby="t-valores">
+    <div class="tarjeta">
+      <h2 id="t-valores">Los valores</h2>
+      <div class="campos">
+        <div class="campo">
+          <label for="salario">Salario mensual del contrato laboral</label>
+          <div class="peso"><span aria-hidden="true">$</span><input id="salario" inputmode="numeric" autocomplete="off" value="4.000.000"></div>
+          <p class="campo__ayuda" id="ayuda-salario"></p>
+        </div>
+        <div class="campo">
+          <label for="honorario">Honorario mensual de prestación de servicios, sin IVA</label>
+          <div class="peso"><span aria-hidden="true">$</span><input id="honorario" inputmode="numeric" autocomplete="off" value="4.000.000"></div>
+          <p class="campo__ayuda" id="ayuda-honorario"></p>
+        </div>
+      </div>
+      <div class="acciones">
+        <button type="button" class="boton" id="igualar">Usar el mismo valor en los dos</button>
+        <button type="button" class="boton boton--claro" id="equivalente">Poner el honorario equivalente</button>
+      </div>
+
+      <details class="ajustes">
+        <summary>Ajustes y valores del año</summary>
+        <div class="ajustes__in">
+          <div class="campo">
+            <label for="riesgo">Clase de riesgo laboral (ARL)</label>
+            <select id="riesgo">
+              <option value="1">I · Mínimo (oficina): 0,522 %</option>
+              <option value="2">II · Bajo: 1,044 %</option>
+              <option value="3">III · Medio: 2,436 %</option>
+              <option value="4">IV · Alto: 4,35 %</option>
+              <option value="5">V · Máximo: 6,96 %</option>
+            </select>
+          </div>
+          <label class="check"><input type="checkbox" id="retencion" checked><span>Calcular la retención en la fuente (tabla del art. 383 del Estatuto Tributario)</span></label>
+          <label class="check"><input type="checkbox" id="exonerado" checked><span>Quien contrata es empresa o persona con dos o más trabajadores: no paga salud del empleador, ICBF ni SENA por salarios de menos de 10 mínimos (art. 114-1 del Estatuto Tributario)</span></label>
+          <div class="campos campos--tres">
+            <div class="campo">
+              <label for="p-smmlv">Salario mínimo</label>
+              <div class="peso"><span aria-hidden="true">$</span><input id="p-smmlv" inputmode="numeric" autocomplete="off"></div>
+            </div>
+            <div class="campo">
+              <label for="p-aux">Auxilio de transporte</label>
+              <div class="peso"><span aria-hidden="true">$</span><input id="p-aux" inputmode="numeric" autocomplete="off"></div>
+            </div>
+            <div class="campo">
+              <label for="p-uvt">UVT</label>
+              <div class="peso"><span aria-hidden="true">$</span><input id="p-uvt" inputmode="numeric" autocomplete="off"></div>
+            </div>
+          </div>
+          <p class="nota">Valores de <span data-anio>2026</span>. El decreto del salario mínimo tiene demandas pendientes en el Consejo de Estado; si cambia, escribe aquí el valor nuevo. <button type="button" class="enlace" id="restablecer">Volver a los valores de <span data-anio>2026</span></button></p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="bloque" aria-labelledby="t-comparacion">
+    <h2 id="t-comparacion">La cuenta completa</h2>
+    <p class="ayuda" id="ayuda-comparacion"></p>
+    <div class="barras" id="barras" aria-hidden="true"></div>
+    <div class="dos">
+      <article class="tarjeta figura" aria-labelledby="t-contrato">
+        <p class="kicker kicker--oliva">Contrato laboral</p>
+        <h3 id="t-contrato" class="figura__total"><span id="c-total">…</span><small id="c-total-etq"></small></h3>
+        <p class="figura__mes" id="c-mes"></p>
+        <div class="tabla-scroll"><table class="desglose" id="c-tabla"></table></div>
+        <ul class="extras" id="c-extras"></ul>
+      </article>
+      <article class="tarjeta figura" aria-labelledby="t-prestacion">
+        <p class="kicker kicker--oliva">Prestación de servicios</p>
+        <h3 id="t-prestacion" class="figura__total"><span id="p-total">…</span><small id="p-total-etq"></small></h3>
+        <p class="figura__mes" id="p-mes"></p>
+        <div class="tabla-scroll"><table class="desglose" id="p-tabla"></table></div>
+        <ul class="extras" id="p-extras"></ul>
+      </article>
+    </div>
+    <div class="equivalencia tarjeta" aria-live="polite">
+      <p class="kicker kicker--oliva">Equivalencia</p>
+      <p id="equiv-texto" class="equivalencia__texto"></p>
+    </div>
+  </section>
+
+  <section class="bloque dos" aria-label="Cómo se calcula y límites">
+    <div class="tarjeta">
+      <h2>Cómo se calcula</h2>
+      <ul class="reglas">
+        <li><strong>Contrato laboral.</strong> Prima de servicios (un mes al año) y cesantías (un mes al año), con el auxilio de transporte en la base; intereses del 12 % sobre las cesantías; 15 días hábiles de vacaciones pagadas. El trabajador aporta 4 % a salud y 4 % a pensión.</li>
+        <li><strong>Auxilio de transporte</strong> para salarios de hasta dos mínimos.</li>
+        <li><strong>Prestación de servicios.</strong> Se cotiza sobre el 40 % del honorario sin IVA, nunca menos de un mínimo ni más de 25: salud 12,5 %, pensión 16 % y ARL según el riesgo. En riesgo IV y V, la ARL la paga quien contrata.</li>
+        <li><strong>Fondo de Solidaridad Pensional:</strong> 1 % desde 4 mínimos y hasta 2 % desde 20 mínimos, para los dos tipos de contrato.</li>
+        <li><strong>Retención en la fuente:</strong> al ingreso del mes se le restan los aportes obligatorios a salud y pensión y la renta exenta del 25 % (hasta 790 UVT al año); el resultado se lleva a la tabla del art. 383. En el contrato laboral se suman los dos pagos de la prima.</li>
+        <li><strong>Quien contrata</strong> paga además, en el contrato laboral, 12 % de pensión, ARL, 4 % de caja de compensación y, si no está exonerado, 8,5 % de salud, 3 % de ICBF y 2 % de SENA.</li>
+      </ul>
+      <p class="nota">Fuentes: Código Sustantivo del Trabajo; Ley 100 de 1993 y Ley 797 de 2003; Ley 2277 de 2022, art. 89; Estatuto Tributario, arts. 114-1, 206 y 383; Decretos 1469 y 1470 de 2025; Resolución DIAN 000238 de 2025; <a href="https://www.ugpp.gov.co/wp-content/uploads/2026/01/ABC-Trabajador-Independiente-Contrato-Prestacion-Servicios.pdf" target="_blank" rel="noopener">guía de la UGPP para independientes</a>.</p>
+    </div>
+    <div class="tarjeta">
+      <h2>Límites</h2>
+      <ul class="reglas">
+        <li>Es una guía para comparar, <strong>no una liquidación oficial</strong> ni asesoría legal o tributaria.</li>
+        <li>La retención en la fuente es un anticipo del impuesto de renta, no el impuesto final. No incluye otras deducciones (dependientes, intereses de vivienda, medicina prepagada) ni el tope del 40 % con otras rentas exentas.</li>
+        <li>Las cesantías y sus intereses se tratan como exentos. Para salarios promedio de más de 350 UVT, la ley solo exime una parte.</li>
+        <li>No incluye salario integral, horas extra, recargos, dotación, indemnizaciones, IVA ni ICA del contratista, ni aportes voluntarios.</li>
+        <li>La calculadora compara costos y no dice qué figura corresponde. Si hay subordinación, horario y continuidad, la ley trata la relación como un contrato laboral.</li>
+        <li>La reforma pensional (Ley 2381 de 2024) empieza a regir el 1 de abril de 2027 y cambiará parte de estas reglas.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie__in">
+    <p>Todo se calcula en tu navegador: los valores que escribes no se envían a ningún lado.</p>
+    <p>Inspirada en <a href="https://github.com/Zippland/worth-calculator" target="_blank" rel="noopener">worth-calculator</a> de Zylan (licencia MIT). Código abierto en <a href="https://github.com/Estado-X/calculadora-laboral-colombia" target="_blank" rel="noopener">GitHub</a>.</p>
+    <p class="firma">Hecho por <a href="https://estadox.com" target="_blank" rel="noopener">Estado <em>X</em></a></p>
+  </div>
+</footer>
+<script src="assets/calculo.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
