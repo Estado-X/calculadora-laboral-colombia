@@ -1,4 +1,4 @@
-/* Estado X · carril editorial (marfil) con la banda de color del banner de LinkedIn.
+/* Estado X · carril editorial (marfil) con la banda de color de la marca.
    Tokens tomados del design system de Estado X. */
 :root {
   --oliva: #73704f; --oliva-700: #565442; --oliva-300: #a9a688; --oliva-100: #d9d6c4;
@@ -20,7 +20,8 @@
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--marfil); color: var(--tinta); font: 16px/1.55 var(--sans); }
 a { color: var(--oliva-700); text-underline-offset: 2px; }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #b2b0bc; outline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid var(--vino); outline-offset: 2px; }
+.banda a:focus-visible, .banda button:focus-visible, .pie a:focus-visible { outline-color: var(--cadmio); }
 .contenedor { max-width: 1200px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left)); }
 
 /* Banda superior con los colores del banner */
@@ -61,7 +62,7 @@ h2 { margin: 0 0 12px; font: 700 26px/1.15 var(--display); color: var(--vino); l
 .campo__ayuda { margin: 0; font-size: 13px; color: var(--muted); min-height: 1.2em; }
 .campo__ayuda.alerta { color: var(--danger); }
 .peso { display: flex; align-items: center; border: 1.5px solid var(--borde-fuerte); border-radius: var(--r-md); background: var(--marfil-050); transition: border-color .14s var(--ease); }
-.peso:focus-within { border-color: var(--oliva); outline: 3px solid #b2b0bc; outline-offset: 0; }
+.peso:focus-within { border-color: var(--oliva); outline: 3px solid var(--vino); outline-offset: 0; }
 .peso span { padding-left: 14px; color: var(--muted); font: 600 18px/1 var(--display); }
 .peso input { flex: 1; min-width: 0; width: 100%; border: 0; background: transparent; font: 700 22px/1.2 var(--display); padding: 12px 14px 12px 6px; color: var(--tinta); font-variant-numeric: tabular-nums; }
 .peso input:focus { outline: none; }

@@ -29,10 +29,10 @@ Calculadora abierta para saber **cuánto te queda al año y cuánto le cuesta a 
 | Intereses sobre cesantías | 12 % al año | Ley 52 de 1975 |
 | Vacaciones | 15 días hábiles pagados al año | Código Sustantivo del Trabajo, art. 186 |
 | Aportes del trabajador | Salud 4 % y pensión 4 % | Ley 100 de 1993 |
-| Aportes del empleador | Pensión 12 %, ARL según riesgo, caja 4 %; salud 8,5 %, ICBF 3 % y SENA 2 % si no está exonerado | Ley 100 de 1993; Estatuto Tributario, art. 114-1 |
+| Aportes del empleador | Pensión 12 %, ARL según riesgo, caja 4 %; salud 8,5 %, ICBF 3 % y SENA 2 % si no está exonerado. Caja, ICBF y SENA sobre el salario completo, sin el tope de 25 mínimos | Ley 100 de 1993; Ley 21 de 1982; Estatuto Tributario, art. 114-1 |
 | Base de cotización del contratista | 40 % del honorario sin IVA, entre 1 y 25 salarios mínimos, sin restar costos | Ley 2277 de 2022, art. 89; [guía de la UGPP](https://www.ugpp.gov.co/wp-content/uploads/2026/01/ABC-Trabajador-Independiente-Contrato-Prestacion-Servicios.pdf) |
 | Aportes del contratista | Salud 12,5 %, pensión 16 % y ARL (riesgos I a III; en IV y V la paga quien contrata) | Ley 100 de 1993; Decreto 723 de 2013 |
-| Fondo de Solidaridad Pensional | 1 % desde 4 mínimos, hasta 2 % desde 20 mínimos | Ley 797 de 2003; Decreto 510 de 2003 |
+| Fondo de Solidaridad Pensional | 1 % desde 4 mínimos, sube por tramos desde 16 y llega a 2 % con más de 20 | Ley 797 de 2003; Decreto 510 de 2003 |
 | Retención en la fuente | Ingreso del mes menos aportes obligatorios y renta exenta del 25 % (hasta 790 UVT al año), en la tabla del art. 383 | Estatuto Tributario, arts. 206 y 383 |
 
 En el contrato laboral, la retención se calcula sobre los doce salarios y los dos pagos de la prima. El dinero que «te queda» incluye las cesantías, aunque van a un fondo; el ahorro para pensión se muestra aparte.
@@ -58,6 +58,7 @@ En el contrato laboral, la retención se calcula sobre los doce salarios y los d
 - Las cesantías y sus intereses se tratan como exentos. Para salarios promedio de más de 350 UVT, la ley solo exime una parte.
 - No incluye salario integral, horas extra, recargos, dotación, indemnizaciones, IVA ni ICA del contratista, ni aportes voluntarios.
 - Compara costos y no dice qué figura corresponde. Si hay subordinación, horario y continuidad, la ley trata la relación como un contrato laboral.
+- Las equivalencias son aproximadas en los saltos que trae la ley: al pasar de dos mínimos se pierde el auxilio de transporte, desde cuatro entra el Fondo de Solidaridad Pensional y la tabla de retención tiene escalones.
 - La reforma pensional (Ley 2381 de 2024) empieza a regir el 1 de abril de 2027 y cambiará parte de estas reglas.
 
 ### Crédito
@@ -109,6 +110,7 @@ The rules, values and legal sources are listed in the Spanish table above. In sh
 - Severance and its interest are treated as exempt; above an average salary of 350 UVT, the law only exempts part of it.
 - Integral salary, overtime, surcharges, work clothing, severance pay for dismissal, the contractor's VAT or ICA, and voluntary contributions are not included.
 - It compares costs; it does not say which contract applies. If there is subordination, a schedule and continuity, the law treats the relationship as employment.
+- Equivalents are approximate around the law's steps: the transport allowance ends above two minimum wages, the Solidarity Fund starts at four, and the withholding table has jumps.
 - The pension reform (Law 2381 of 2024) takes effect on April 1, 2027 and will change some of these rules.
 
 ### Credit

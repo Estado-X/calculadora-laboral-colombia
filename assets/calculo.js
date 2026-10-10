@@ -94,9 +94,10 @@
     const saludE = exonerado ? 0 : ibc * 0.085;
     const pensionE = ibc * 0.12;
     const arlE = ibc * ARL[op.claseRiesgo];
-    const caja = ibc * 0.04;
-    const icbf = exonerado ? 0 : ibc * 0.03;
-    const sena = exonerado ? 0 : ibc * 0.02;
+    // Caja, ICBF y SENA se liquidan sobre la nómina completa, sin el tope de 25 mínimos (Ley 21 de 1982, art. 17)
+    const caja = salario * 0.04;
+    const icbf = exonerado ? 0 : salario * 0.03;
+    const sena = exonerado ? 0 : salario * 0.02;
     const aportesE = saludE + pensionE + arlE + caja + icbf + sena;
     const costoAnio = 12 * (salario + auxilio) + prima + cesantias + intereses + 12 * aportesE;
 

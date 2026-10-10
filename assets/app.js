@@ -10,7 +10,7 @@
     return s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
   const pesos = (n) => (n < 0 ? "−$" : "$") + miles(n);
-  const pct = (x, dec = 1) => (x * 100).toFixed(dec).replace(/\.0+$/, "").replace(".", ",") + " %";
+  const pct = (x, dec = 1) => (x * 100).toFixed(dec).replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "").replace(".", ",") + " %";
   const leer = (el) => {
     const d = String(el.value || "").replace(/[^\d]/g, "");
     return d ? parseInt(d, 10) : 0;
@@ -66,7 +66,11 @@
 
     if (!s || !h) {
       $("v-cifra").textContent = "…";
+      $("v-per").textContent = "";
       $("v-texto").textContent = "Escribe el salario y el honorario para hacer la cuenta.";
+      ["barras", "c-tabla", "p-tabla", "c-extras", "p-extras", "equiv-texto", "c-mes", "p-mes", "c-total-etq", "p-total-etq"].forEach((id) => ($(id).innerHTML = ""));
+      $("c-total").textContent = "…";
+      $("p-total").textContent = "…";
       return;
     }
     const c = C.contratoLaboral(s, p, op);
@@ -96,7 +100,7 @@
     $("v-per").textContent = `unos ${pesos(Math.abs(dif) / 12)} ${dif < 0 ? "menos" : "más"} al mes`;
     $("v-texto").innerHTML = Math.abs(dif) < 12000
       ? "Las dos opciones te dejan prácticamente lo mismo al año."
-      : `Con prestación de servicios te quedan <strong>${pesos(Math.abs(dif))} ${dif < 0 ? "menos" : "más"}</strong> al año que con el contrato laboral (${pct(rel, 0)} ${dif < 0 ? "menos" : "más"}).`;
+      : `Con prestación de servicios te quedan <strong>${pesos(Math.abs(dif))} ${dif < 0 ? "menos" : "más"}</strong> al año que con el contrato laboral${rel <= 1 ? ` (${pct(rel, 0)} ${dif < 0 ? "menos" : "más"})` : ""}.` + (ps.netoAnio <= 0 ? " Con este honorario, los aportes se comen todo el ingreso." : "");
 
     $("ayuda-comparacion").textContent = "Lo que recibes en el año y lo que se descuenta. Las cesantías cuentan como tuyas aunque van a un fondo; el ahorro para pensión se muestra aparte.";
 
@@ -152,7 +156,9 @@
     const seq = C.salarioEquivalente(h, p, op);
     $("equiv-texto").innerHTML =
       `Para que la prestación de servicios te deje lo mismo que un salario de ${pesos(s)}, el honorario debe ser de al menos <strong>${pesos(heq)} al mes</strong>, un ${pct(heq / s - 1, 0)} más. ` +
-      `Visto al revés, un honorario de ${pesos(h)} te deja lo mismo que un salario de <strong>${pesos(seq)}</strong>.`;
+      (seq > 0 && !C.contratoLaboral(seq, p, op).bajoMinimo
+        ? `Visto al revés, un honorario de ${pesos(h)} te deja lo mismo que un salario de <strong>${pesos(seq)}</strong>.`
+        : `Visto al revés, un honorario de ${pesos(h)} deja menos que cualquier contrato laboral de tiempo completo con salario mínimo.`);
     $("equivalente").textContent = "Poner el honorario equivalente";
     $("equivalente").dataset.valor = heq;
   }
@@ -227,6 +233,7 @@
       const on = b.dataset.mirada === mirada;
       b.classList.toggle("activa", on);
       b.setAttribute("aria-checked", on ? "true" : "false");
+      b.tabIndex = on ? 0 : -1;
     });
     render();
   }
@@ -265,9 +272,13 @@
   $("restablecer").addEventListener("click", () => { restablecer(); render(); });
 
   // ---------- Inicio (los valores pueden venir en el enlace) ----------
+  function desdeEnlace() {
+    const q = new URLSearchParams(location.hash.slice(1));
+    if (q.get("salario")) escribir($("salario"), parseInt(q.get("salario"), 10) || 0);
+    if (q.get("honorario")) escribir($("honorario"), parseInt(q.get("honorario"), 10) || 0);
+    ponerMirada(q.get("mirada") || mirada);
+  }
   restablecer();
-  const q = new URLSearchParams(location.hash.slice(1));
-  if (q.get("salario")) escribir($("salario"), parseInt(q.get("salario"), 10) || 0);
-  if (q.get("honorario")) escribir($("honorario"), parseInt(q.get("honorario"), 10) || 0);
-  ponerMirada(q.get("mirada") || "persona");
+  desdeEnlace();
+  window.addEventListener("hashchange", desdeEnlace);
 })();

@@ -83,3 +83,11 @@ test("Retención apagada da cero", () => {
   assert.equal(C.contratoLaboral(20000000, P, op).retencion, 0);
   assert.equal(C.prestacionServicios(20000000, P, op).retencion, 0);
 });
+
+test("Caja, ICBF y SENA sin el tope de 25 mínimos; salud y pensión con tope", () => {
+  const s = 30 * P.smmlv;
+  const r = C.contratoLaboral(s, P, OP);
+  cerca(r.empleador.caja, s * 0.04);
+  cerca(r.empleador.icbf + r.empleador.sena, s * 0.05); // no exonerado por pasar de 10 mínimos
+  cerca(r.empleador.pension, 25 * P.smmlv * 0.12);
+});
