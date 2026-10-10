@@ -16,6 +16,7 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--marfil); color: var(--tinta); font: 16px/1.55 var(--sans); }
 a { color: var(--oliva-700); text-underline-offset: 2px; }
