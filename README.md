@@ -59,13 +59,13 @@ En el contrato laboral, la retención se calcula sobre los doce salarios y los d
 - No incluye salario integral, horas extra, recargos, dotación, indemnizaciones, IVA ni ICA del contratista, ni aportes voluntarios.
 - Compara costos y no dice qué figura corresponde. Si hay subordinación, horario y continuidad, la ley trata la relación como un contrato laboral.
 - Las equivalencias son aproximadas en los saltos que trae la ley: al pasar de dos mínimos se pierde el auxilio de transporte, desde cuatro entra el Fondo de Solidaridad Pensional y la tabla de retención tiene escalones.
-- La reforma pensional (Ley 2381 de 2024) empieza a regir el 1 de abril de 2027 y cambiará parte de estas reglas.
+- La reforma pensional (Ley 2381 de 2024) empieza a regir el 1 de abril de 2027, según la Sentencia C-264 de 2026 de la Corte Constitucional, y cambiará parte de estas reglas.
 
 ### Crédito
 
 Inspirada en **[worth-calculator](https://github.com/Zippland/worth-calculator)** de Zylan (licencia MIT) y su idea de calcular cuánto vale de verdad un trabajo más allá del salario. Esta es una versión nueva, escrita desde cero para las reglas de Colombia. No reutiliza código de worth-calculator.
 
-Las normas y valores son de sus autores: Congreso de la República, Gobierno nacional, DIAN y UGPP. Tipografía de acento: [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) (SIL Open Font License).
+Las normas y valores son de sus autores: Congreso de la República, Gobierno nacional, DIAN y UGPP.
 
 Hecho por **[Estado X](https://estadox.com)** · Código con licencia MIT.
 
@@ -111,12 +111,12 @@ The rules, values and legal sources are listed in the Spanish table above. In sh
 - Integral salary, overtime, surcharges, work clothing, severance pay for dismissal, the contractor's VAT or ICA, and voluntary contributions are not included.
 - It compares costs; it does not say which contract applies. If there is subordination, a schedule and continuity, the law treats the relationship as employment.
 - Equivalents are approximate around the law's steps: the transport allowance ends above two minimum wages, the Solidarity Fund starts at four, and the withholding table has jumps.
-- The pension reform (Law 2381 of 2024) takes effect on April 1, 2027 and will change some of these rules.
+- The pension reform (Law 2381 of 2024) takes effect on April 1, 2027, per Constitutional Court ruling C-264 of 2026, and will change some of these rules.
 
 ### Credit
 
 Inspired by **[worth-calculator](https://github.com/Zippland/worth-calculator)** by Zylan (MIT license) and its idea of measuring what a job is really worth beyond the salary. This is a new version, written from scratch for Colombian rules. It does not reuse worth-calculator code.
 
-Laws and values belong to their publishers: the Colombian Congress and Government, DIAN and UGPP. Accent typeface: [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) (SIL Open Font License).
+Laws and values belong to their publishers: the Colombian Congress and Government, DIAN and UGPP.
 
 Made by **[Estado X](https://estadox.com)** · Code under the MIT license.
